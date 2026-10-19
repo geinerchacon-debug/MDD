@@ -1,5 +1,6 @@
 # Compilación en la nube con Codemagic (https://codemagic.io)
 # Vea el tutorial, capítulo 5, para saber cuándo usar cada flujo.
+# Todos los flujos usan Mac M2: es la única máquina con minutos gratis (500 al mes).
 
 definitions:
   preparar: &preparar
@@ -14,7 +15,7 @@ workflows:
   # 1) APK para instalar directamente en un teléfono Android y probar.
   android-prueba:
     name: Android - APK de prueba
-    instance_type: linux_x2
+    instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
       flutter: stable
@@ -33,7 +34,7 @@ workflows:
   #    Requiere subir la llave "mdd_llave" en Codemagic > Teams > Code signing identities.
   android-play:
     name: Android - Google Play
-    instance_type: linux_x2
+    instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
       flutter: stable
