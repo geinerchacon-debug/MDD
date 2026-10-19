@@ -1,0 +1,79 @@
+# Compilación en la nube con Codemagic (https://codemagic.io)
+# Vea el tutorial, capítulo 5, para saber cuándo usar cada flujo.
+
+definitions:
+  preparar: &preparar
+    name: Preparar proyecto
+    script: |
+      flutter create --org cr.montededios --project-name mdd_radio --platforms=android,ios .
+      python3 tool/configurar_plataformas.py
+      flutter pub get
+      dart run flutter_launcher_icons
+
+workflows:
+  # 1) APK para instalar directamente en un teléfono Android y probar.
+  android-prueba:
+    name: Android - APK de prueba
+    instance_type: linux_x2
+    max_build_duration: 60
+    environment:
+      flutter: stable
+    scripts:
+      - *preparar
+      - name: Compilar APK
+        script: flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+    publishing:
+      email:
+        recipients:
+          - CAMBIE_AQUI_SU_CORREO@ejemplo.com
+
+  # 2) Archivo .aab firmado para subir a Google Play.
+  #    Requiere subir la llave "mdd_llave" en Codemagic > Teams > Code signing identities.
+  android-play:
+    name: Android - Google Play
+    instance_type: linux_x2
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      android_signing:
+        - mdd_llave
+    scripts:
+      - *preparar
+      - name: Compilar AAB
+        script: flutter build appbundle --release
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+    publishing:
+      email:
+        recipients:
+          - CAMBIE_AQUI_SU_CORREO@ejemplo.com
+
+  # 3) iPhone: compila, firma y envía a TestFlight / App Store.
+  #    Requiere la integración de App Store Connect llamada "MDD_API".
+  ios-testflight:
+    name: iOS - TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 90
+    integrations:
+      app_store_connect: MDD_API
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: cr.montededios.mddRadio
+    scripts:
+      - *preparar
+      - name: Aplicar perfiles de firma
+        script: xcode-project use-profiles
+      - name: Compilar IPA
+        script: flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

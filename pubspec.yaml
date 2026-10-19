@@ -1,0 +1,43 @@
+name: mdd_radio
+description: "MDD Radio HD - App oficial de las emisoras de Monte de Dios SJM."
+publish_to: 'none'
+
+# Cambie este número cada vez que publique una nueva versión en las tiendas.
+# Formato: versión_visible+número_de_compilación  (ej.: 1.0.1+2)
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  just_audio: ^0.10.4
+  just_audio_background: ^0.0.1-beta.17
+  http: ^1.2.2
+  url_launcher: ^6.3.1
+  xml: ^6.5.0
+  shared_preferences: ^2.3.3
+  webview_flutter: ^4.10.0
+  webview_flutter_android: ^4.3.0
+  webview_flutter_wkwebview: ^3.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/config/
+
+# Ícono de la app (se genera con: dart run flutter_launcher_icons)
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icono_app.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/images/icono_adaptativo.png"

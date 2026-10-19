@@ -1,0 +1,162 @@
+{
+  "versionConfig": 1,
+  "app": {
+    "nombre": "MDD Radio HD",
+    "eslogan": "Monte de Dios SJM",
+    "colorPrincipal": "#E3121C",
+    "colorFondo": "#0B0B0D",
+    "colorTarjetas": "#1A1A1F"
+  },
+  "emisoras": [
+    {
+      "id": "mdd-principal",
+      "nombre": "MDD Radio HD",
+      "descripcion": "Alabanza y Palabra de Dios las 24 horas",
+      "urlTransmision": "https://sp.dattavolt.com:7086/stream",
+      "imagenUrl": ""
+    }
+  ],
+  "menu": [
+    {
+      "id": "envivo",
+      "titulo": "En vivo",
+      "icono": "radio",
+      "tipo": "radio",
+      "visible": true,
+      "barraInferior": true
+    },
+    {
+      "id": "tv",
+      "titulo": "TV en vivo",
+      "icono": "video",
+      "tipo": "video",
+      "visible": true,
+      "barraInferior": true,
+      "url": "https://tvdatta.com/broadcaster/montededios/hybrid/player",
+      "texto": "Vea nuestros cultos y programas en vivo. Toque el reproductor para iniciar."
+    },
+    {
+      "id": "predicas",
+      "titulo": "Prédicas",
+      "icono": "video",
+      "tipo": "youtube",
+      "visible": true,
+      "barraInferior": true,
+      "canalYoutube": "UC9OdEa06qI6jYGGQA4ihyKw",
+      "urlCanal": "https://www.youtube.com/@MontedeDiosSjm"
+    },
+    {
+      "id": "devocional",
+      "titulo": "Devocional",
+      "icono": "biblia",
+      "tipo": "texto",
+      "visible": true,
+      "barraInferior": true,
+      "bloques": [
+        {
+          "titulo": "Lámpara es a mis pies tu palabra",
+          "subtitulo": "Salmo 119:105",
+          "texto": "Cada día es una nueva oportunidad para caminar a la luz de la Palabra de Dios. Tome unos minutos para leer, orar y escuchar lo que el Señor quiere decirle hoy.\n\n(Reemplace este texto con el devocional del día desde el archivo de configuración.)",
+          "imagenUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "programacion",
+      "titulo": "Programación",
+      "icono": "calendario",
+      "tipo": "programacion",
+      "visible": true,
+      "barraInferior": false,
+      "dias": [
+        {
+          "dia": "Lunes a viernes",
+          "programas": [
+            { "hora": "05:00 - 06:00", "nombre": "Amanecer con Dios", "descripcion": "Oración y alabanza para empezar el día" },
+            { "hora": "06:00 - 09:00", "nombre": "Programa de ejemplo", "descripcion": "Edite esta programación en el archivo de configuración" }
+          ]
+        },
+        {
+          "dia": "Domingo",
+          "programas": [
+            { "hora": "10:00 - 12:00", "nombre": "Culto dominical en vivo", "descripcion": "Transmisión desde Monte de Dios SJM" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oracion",
+      "titulo": "Peticiones de oración",
+      "icono": "oracion",
+      "tipo": "enlaces",
+      "visible": true,
+      "barraInferior": false,
+      "texto": "Queremos orar por usted. Envíenos su petición y nuestro equipo de intercesión la llevará delante del Señor.",
+      "enlaces": [
+        { "texto": "Enviar petición por WhatsApp", "icono": "whatsapp", "url": "" },
+        { "texto": "Enviar petición por correo", "icono": "correo", "url": "" }
+      ]
+    },
+    {
+      "id": "donaciones",
+      "titulo": "Donaciones",
+      "icono": "donar",
+      "tipo": "texto",
+      "visible": true,
+      "barraInferior": false,
+      "bloques": [
+        {
+          "titulo": "Siembre en esta obra",
+          "subtitulo": "2 Corintios 9:7",
+          "texto": "Su ofrenda nos permite seguir llevando el mensaje de Cristo a través de la radio.\n\n(Escriba aquí los datos para donar: SINPE Móvil, cuentas, etc.)",
+          "imagenUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "redes",
+      "titulo": "Redes sociales",
+      "icono": "compartir",
+      "tipo": "enlaces",
+      "visible": true,
+      "barraInferior": false,
+      "texto": "Síganos y comparta el mensaje.",
+      "enlaces": [
+        { "texto": "YouTube", "icono": "youtube", "url": "https://www.youtube.com/@MontedeDiosSjm" },
+        { "texto": "Facebook", "icono": "facebook", "url": "https://www.facebook.com/iglesiamontededios.sjm/" },
+        { "texto": "Instagram", "icono": "instagram", "url": "https://www.instagram.com/montedediossjm/" }
+      ]
+    },
+    {
+      "id": "contacto",
+      "titulo": "Contacto",
+      "icono": "telefono",
+      "tipo": "enlaces",
+      "visible": true,
+      "barraInferior": false,
+      "texto": "Estamos para servirle.",
+      "enlaces": [
+        { "texto": "Llamar", "icono": "telefono", "url": "" },
+        { "texto": "WhatsApp", "icono": "whatsapp", "url": "" },
+        { "texto": "Correo electrónico", "icono": "correo", "url": "" },
+        { "texto": "Cómo llegar", "icono": "ubicacion", "url": "" }
+      ]
+    },
+    {
+      "id": "nosotros",
+      "titulo": "Quiénes somos",
+      "icono": "iglesia",
+      "tipo": "texto",
+      "visible": true,
+      "barraInferior": false,
+      "bloques": [
+        {
+          "titulo": "Monte de Dios SJM",
+          "subtitulo": "",
+          "texto": "Escriba aquí la historia, la visión y la misión del ministerio.",
+          "imagenUrl": ""
+        }
+      ]
+    }
+  ]
+}
