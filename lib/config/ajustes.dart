@@ -6,7 +6,7 @@ class Ajustes {
   ///
   /// Mientras esté vacío (''), la app usa la copia incluida en
   /// assets/config/app_config.json.
-  static const String urlConfiguracionRemota = '';
+  static const String urlConfiguracionRemota = 'https://raw.githubusercontent.com/geinerchacon-debug/MDD/refs/heads/main/assets/config/app_config.json';
 
   /// Segundos máximos de espera al descargar la configuración.
   static const int tiempoEsperaSegundos = 8;
