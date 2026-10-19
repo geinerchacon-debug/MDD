@@ -58,19 +58,51 @@ class MddRadioApp extends StatelessWidget {
   }
 }
 
+/// Se muestra solo si ninguna copia de app_config.json se pudo leer.
+/// Muestra el motivo exacto para poder corregirlo.
 class _PantallaSinConfiguracion extends StatelessWidget {
   const _PantallaSinConfiguracion();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(32),
-          child: Text(
-            'No se pudo cargar la configuración de la app.\n'
-            'Revise que el archivo app_config.json no tenga errores.',
-            textAlign: TextAlign.center,
+    final servicio = ConfigService.instancia;
+    return Scaffold(
+      body: SafeArea(
+        child: ValueListenableBuilder<List<String>>(
+          valueListenable: servicio.errores,
+          builder: (context, errores, _) => ListView(
+            padding: const EdgeInsets.all(24),
+            children: [
+              const SizedBox(height: 40),
+              const Icon(Icons.error_outline, size: 48),
+              const SizedBox(height: 16),
+              const Text(
+                'No se pudo cargar la configuración de la app.\n'
+                'Revise que el archivo app_config.json no tenga errores.',
+                textAlign: TextAlign.center,
+              ),
+              if (errores.isNotEmpty) ...[
+                const SizedBox(height: 24),
+                const Text('Detalle técnico:',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 8),
+                for (final e in errores)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: SelectableText(e,
+                        style: const TextStyle(
+                            fontFamily: 'monospace', fontSize: 12)),
+                  ),
+              ],
+              const SizedBox(height: 24),
+              Center(
+                child: FilledButton.icon(
+                  onPressed: () => servicio.iniciar(),
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Reintentar'),
+                ),
+              ),
+            ],
           ),
         ),
       ),
